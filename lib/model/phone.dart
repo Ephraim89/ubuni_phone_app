@@ -1,3 +1,4 @@
+// Single Phone Model that corresponds with the Json data
 class Phone {
   int id;
   String name;

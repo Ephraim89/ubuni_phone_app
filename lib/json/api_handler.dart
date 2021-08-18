@@ -1,3 +1,4 @@
+// This Class Handles Json Data from the internet
 import 'dart:async';
 import 'package:http/http.dart' as http;
 

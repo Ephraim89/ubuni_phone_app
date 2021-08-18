@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ubuni_phone_app/screens/home.dart';
 // import 'package:ubuni_phone_app/screens/home.dart';
-import 'package:ubuni_phone_app/screens/phones_list.dart';
+// import 'package:ubuni_phone_app/screens/phones_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mobile Shop',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: PhoneList(),
+      home: HomePage(),
     );
   }
 }
