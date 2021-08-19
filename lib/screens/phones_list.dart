@@ -8,25 +8,25 @@ class PhoneList extends StatefulWidget {
   @override
   _PhoneListState createState() => _PhoneListState();
 }
-
 class _PhoneListState extends State<PhoneList> {
   List<Phone> phoneList = <Phone>[];
-
   void getPhonesfromJson() async {
-    PhoneJson.getPhoneJson().then((response) {
-      setState(() {
-        Iterable list = json.decode(response.body);
-        phoneList = list.map((model) => Phone.fromJson(model)).toList();
-      });
-    });
+    PhoneJson.getPhoneJson().then(
+      (response) {
+        setState(
+          () {
+            Iterable list = json.decode(response.body);
+            phoneList = list.map((model) => Phone.fromJson(model)).toList();
+          },
+        );
+      },
+    );
   }
-
   @override
   void initState() {
     super.initState();
     getPhonesfromJson();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,38 +43,38 @@ class _PhoneListState extends State<PhoneList> {
       ),
       body: Container(
         child: ListView.builder(
-            itemCount: phoneList.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(
-                    phoneList[index].name,
-                    style: TextStyle(
-                      fontFamily: "Montserrat",
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+          itemCount: phoneList.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                title: Text(
+                  phoneList[index].name,
+                  style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
-                  subtitle: Text(
-                    phoneList[index].brand,
-                    style: TextStyle(
-                      fontFamily: "Montserrat",
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  leading: Image.network(phoneList[index].imageUrl),
-                  trailing: Icon(Icons.shopping_cart_sharp),
-                  onTap: () {
-                    _showPhone(context, index);
-                  },
                 ),
-              );
-            }),
+                subtitle: Text(
+                  phoneList[index].brand,
+                  style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                leading: Image.network(phoneList[index].imageUrl),
+                trailing: Icon(Icons.shopping_cart_sharp),
+                onTap: () {
+                  _showPhone(context, index);
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
-
   void _showPhone(BuildContext context, int index) {
     var alertDialog = new AlertDialog(
       title: Container(
@@ -141,7 +141,6 @@ class _PhoneListState extends State<PhoneList> {
         ),
       ),
     );
-
     showDialog(
       context: context,
       builder: (context) {
